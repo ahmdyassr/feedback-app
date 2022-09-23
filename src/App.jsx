@@ -1,5 +1,7 @@
 import {useState} from 'react'
 import Header from './components/Header'
+import FeedbackForm from './components/FeedbackForm'
+import FeedbackStats from './components/FeedbackStats'
 import FeedbackList from './components/FeedbackList'
 import data from './db.json'
 
@@ -18,6 +20,8 @@ const App = () => {
 	return (
 		<>
 			<Header />
+			<FeedbackForm />
+			<FeedbackStats feedback={feedback} />
 			<FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
 		</>
 	)

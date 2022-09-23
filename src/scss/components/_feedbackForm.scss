@@ -1,0 +1,27 @@
+.feedbackForm {
+	padding: 12px;
+	border-radius: 12px;
+	border: 1px solid #d4d4d4;
+	text-align: center;
+}
+
+.feedbackForm h3 {
+	margin: 0 0 12px 0;
+}
+
+.feedbackForm__input {
+	display: block;
+	width: 100%;
+	margin-bottom: 8px;
+	padding: 8px;
+}
+
+.feedbackForm__button {
+	width: 100%;
+	padding: 12px;
+	background-color: blue;
+	box-shadow: none;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}

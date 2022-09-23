@@ -1,0 +1,37 @@
+.feedbackItem {
+	position: relative;
+	margin-bottom: 40px;
+	padding: 12px;
+	background-color: #fff;
+	border-radius: 8px;
+	border: 1px solid #e7e7e7;
+}
+
+.feedbackItem__counter {
+	position: absolute;
+	left: -20px;
+	top: -20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	background-color: blue;
+	color: #fff;
+	border-radius: 100%;
+	text-align: center;
+}
+
+.feedbackItem__close {
+	display: block;
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	top: 12px;
+	right: 12px;
+	background-color: #f1f1f1;
+	box-shadow: 0;
+	border: none;
+	border-radius: 100%;
+	cursor: pointer;
+}

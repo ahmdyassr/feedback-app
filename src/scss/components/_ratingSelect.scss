@@ -1,0 +1,34 @@
+.ratingSelect {
+	display: flex;
+	justify-content: center;
+	padding: 24px 0;
+}
+
+.ratingSelect__item {
+	position: relative;
+	margin: 4px;
+	cursor: pointer;
+}
+
+.ratingSelect__number {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	margin: 0;
+	border-radius: 100%;
+	text-align: center;
+	background-color: rgb(218, 218, 218);
+	color: #131313;
+	border: none;
+	box-shadow: none;
+}
+
+.ratingSelect__label {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	font-weight: bold;
+}

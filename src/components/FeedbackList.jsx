@@ -5,34 +5,34 @@ import FeedbackItem from './FeedbackItem'
 const FeedbackList = ({feedback, handleDelete}) => { 
 
 	return (
-		<>
-			<AnimatePresence>
-				{
-					feedback.length > 0 ? (
-						feedback.map((item) => {
-							const {id, rating, text} = item
-							return (
-								<motion.dev
-									key={id}
-									initial={{opacity: 0}}
-									animate={{opacity: 1}}
-									exit={{opacity: 0}}
-								>
-									<FeedbackItem  
-										id={id} 
-										rating={rating} 
-										text={text} 
-										handleDelete={handleDelete}
-									/>
-								</motion.dev>
-							)
-						})
-					) : (
-						<p>No feedback yet!</p>
-					)
-				}
-			</AnimatePresence>
-		</>
+		
+		<AnimatePresence>
+			{
+				feedback.length > 0 ? (
+					feedback.map((item) => {
+						const {id, rating, text} = item
+						return (
+							<motion.div
+								key={id}
+								initial={{opacity: 0}}
+								animate={{opacity: 1}}
+								exit={{opacity: 0}}
+							>
+								<FeedbackItem  
+									id={id} 
+									rating={rating} 
+									text={text} 
+									handleDelete={handleDelete}
+								/>
+							</motion.div>
+						)
+					})
+				) : (
+					<p>No feedback yet!</p>
+				)
+			}
+		</AnimatePresence>
+		
 	)
 }
 

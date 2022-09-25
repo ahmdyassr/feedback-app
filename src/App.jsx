@@ -1,35 +1,18 @@
-import {useState} from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import {BrowserRouter as Router, Routes,Route} from 'react-router-dom'
 import Header from './components/Header'
-import FeedbackForm from './components/FeedbackForm'
-import FeedbackStats from './components/FeedbackStats'
-import FeedbackList from './components/FeedbackList'
-import data from './db.json'
+import About from './pages/About'
+import Feedback from './pages/Feedback'
+
 
 const App = () => {
-	const [feedback, setFeedback] = useState(data.feedback)
-
-	const deleteFeedback = (id) => {
-		const isConfirmed = window.confirm('Are you sure you wanna delete?')
-
-		if (isConfirmed) {
-			const filteredList = feedback.filter((item) => item.id !== id)
-			setFeedback(filteredList)
-		}
-	}
-
-	const addFeedback = (newFeedback) => {
-		newFeedback.id = uuidv4()
-		setFeedback([newFeedback, ...feedback])
-	}
-
 	return (
-		<>
+		<Router>
 			<Header />
-			<FeedbackForm handleAdd={addFeedback} />
-			<FeedbackStats feedback={feedback} />
-			<FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
-		</>
+			<Routes>
+				<Route path="/" element={<Feedback />} />
+				<Route path="/about" element={<About />}/>
+			</Routes>
+		</Router>
 	)
 }
 

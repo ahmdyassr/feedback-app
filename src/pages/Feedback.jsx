@@ -6,7 +6,7 @@ import FeedbackList from '../components/FeedbackList'
 import data from '../db.json'
 
 const Feedback = () => {
-	const [feedback, setFeedback] = useState(data.feedback)
+	const [feedback, setFeedback] = useState(data?.feedback)
 
 	const deleteFeedback = (id) => {
 		const isConfirmed = window.confirm('Are you sure you wanna delete?')

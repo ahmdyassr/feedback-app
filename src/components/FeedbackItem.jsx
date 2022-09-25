@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types'
+import {useContext} from 'react'
+import {FeedbackContext} from '../context/FeedbackContext'
 
-const FeedbackItem = ({id, rating, text, handleDelete}) => {
+const FeedbackItem = ({id, rating, text}) => {
+	const { deleteFeedback } = useContext(FeedbackContext)
+
 	return (
 		<div className="feedbackItem">
 			<div className="feedbackItem__counter">
@@ -10,7 +14,7 @@ const FeedbackItem = ({id, rating, text, handleDelete}) => {
 				{text}
 			</p>
 
-			<button className="feedbackItem__close" onClick={() => handleDelete(id)}>x</button>
+			<button className="feedbackItem__close" onClick={() => deleteFeedback(id)}>x</button>
 		</div>
 	)
 }

@@ -1,9 +1,11 @@
 import {useState} from 'react'
-import PropTypes from 'prop-types'
 import Button from '../components/Button'
 import RatingsSelect from './RatingsSelect'
+import { useContext } from 'react'
+import { FeedbackContext } from '../context/FeedbackContext'
 
-const FeedbackForm = ({handleAdd}) => {
+const FeedbackForm = () => {
+	const { addFeedback } = useContext(FeedbackContext)
 	const [text, setText] = useState('')
 	const [rating, setRating] = useState(10)
 	const isFormDisabled = text.trim().length > 5 ? false : true
@@ -21,7 +23,7 @@ const FeedbackForm = ({handleAdd}) => {
 			rating
 		}
 
-		handleAdd(newFeedback)
+		addFeedback(newFeedback)
 	}
 	
 	return (
@@ -35,10 +37,6 @@ const FeedbackForm = ({handleAdd}) => {
 			</Button>
 		</form>
 	)
-}
-
-FeedbackForm.propTypes = {
-	handleAdd: PropTypes.func.isRequired
 }
 
 export default FeedbackForm

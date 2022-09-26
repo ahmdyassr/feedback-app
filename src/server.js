@@ -20,6 +20,14 @@ const makeServer = () => {
 					"id": 3
 				}],
 			}))
+
+			this.post('/api/feedback', (schema, request) => {
+				const data = JSON.parse(request.requestBody)
+
+				return {
+					...data
+				}
+			})
 		}
 	})
 }

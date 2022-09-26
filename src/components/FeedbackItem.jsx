@@ -3,7 +3,7 @@ import {useContext} from 'react'
 import {FeedbackContext} from '../context/FeedbackContext'
 
 const FeedbackItem = ({id, rating, text}) => {
-	const { deleteFeedback } = useContext(FeedbackContext)
+	const { editFeedback, deleteFeedback } = useContext(FeedbackContext)
 
 	return (
 		<div className="feedbackItem">
@@ -15,15 +15,22 @@ const FeedbackItem = ({id, rating, text}) => {
 			</p>
 
 			<button className="feedbackItem__close" onClick={() => deleteFeedback(id)}>x</button>
+			<button className="feedbackItem__edit" onClick={() => editFeedback({
+				id,
+				rating,
+				text
+			})}>Edit</button>
 		</div>
 	)
 }
 
 FeedbackItem.propTypes = {
-	id: PropTypes.number.isRequired,
-	rating: PropTypes.number.isRequired,
-	text: PropTypes.string.isRequired,
-	handleDelete: PropTypes.func.isRequired,
+	id: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string
+	]),
+	rating: PropTypes.number,
+	text: PropTypes.string,
 }
 
 export default FeedbackItem

@@ -4,7 +4,6 @@ import Header from './components/Header'
 import About from './pages/About'
 import Feedback from './pages/Feedback'
 
-
 const App = () => {
 	return (
 		<FeedbackProvider>

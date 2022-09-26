@@ -1,12 +1,55 @@
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 import { createContext, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import data from '../db.json'
 
 const FeedbackContext = createContext()
 
 const FeedbackProvider = ({ children }) => {
-	const [feedback, setFeedback] = useState(data?.feedback)
+	const [isLoading, setIsLoading] = useState(true)
+	const [feedback, setFeedback] = useState([])
+	const [feedbackEdit, setFeedbackEdit] = useState({
+		item: {},
+		isEdit: false
+	})
+
+	useEffect(() => {
+		fetchFeedback()
+	}, [])
+
+	// Fetch Feedback
+	const fetchFeedback = async () => {
+		const response = await fetch('/api/feedback')
+		const data = await response.json()
+		setFeedback(data?.feedback)
+		setIsLoading(false)
+	}
+
+	// Add feedback
+	const addFeedback = (newFeedback) => {
+		newFeedback.id = uuidv4()
+		setFeedback([newFeedback, ...feedback])
+	}
+
+	// Set item to be updated
+	const editFeedback = (item) => {
+		setFeedbackEdit({
+			item,
+			isEdit: true
+		})
+	}
+
+	// Update Feedback
+	const updateFeedback = (id, updItem) => {
+		const updatedFeedback = feedback.map((item) => {
+			if (item.id === id) {
+				item = {...item, ...updItem}
+			}
+
+			return item
+		})
+		setFeedback(updatedFeedback)
+	}
 
 	// Delete feedback
 	const deleteFeedback = (id) => {
@@ -18,17 +61,15 @@ const FeedbackProvider = ({ children }) => {
 		}
 	}
 
-	// add feedback
-	const addFeedback = (newFeedback) => {
-		newFeedback.id = uuidv4()
-		setFeedback([newFeedback, ...feedback])
-	}
-
 	return (
 		<FeedbackContext.Provider value={{
 			feedback,
+			addFeedback,
+			editFeedback,
+			updateFeedback,
 			deleteFeedback,
-			addFeedback
+			feedbackEdit,
+			isLoading
 		}}>
 			{children}
 		</FeedbackContext.Provider>
